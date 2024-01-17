@@ -1,0 +1,22 @@
+version: '3'
+services:
+  # MySQL service
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: celln_blog
+
+  # Node.js service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "${BACKEND_PORT}:8080"
+    depends_on:
+      - db
+    env_file:
+      - .env
