@@ -1,7 +1,7 @@
-FROM node:14-alpine as build
+FROM node:14
 
 WORKDIR /celln-blog-api
-COPY package*.json ./
+COPY package.json ./
 RUN npm install
 COPY . .
 COPY .env.sample .env

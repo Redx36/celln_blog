@@ -29,6 +29,7 @@ app.use('/public', express.static("public"));
 
 //all models
 const db = require("./app/models");
+const Role = db.roles;
 db.sequelize.sync();
 //  db.sequelize.sync({force: true}).then(() =>{
 //      initial();
@@ -80,3 +81,23 @@ const PORT = process.env.BACKEND_PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
+
+
+
+function initial() {
+    Role.create({
+        id: 1,
+        name: "client"
+    });
+
+    Role.create({
+        id: 2,
+        name: "admin"
+    });
+
+    Role.create({
+        id: 3,
+        name: "superAdmin"
+    });
+
+}

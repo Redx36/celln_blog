@@ -1,3 +1,5 @@
+# First step
+- copy .env.sample to .env
 # Steps on local server
 
 - Npm install
