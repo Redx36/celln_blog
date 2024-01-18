@@ -9,7 +9,12 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: celln_blog
     ports:
-      - "3307:3306"
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-hlocalhost", "-uroot", "-ppassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   # Node.js service
   app:
@@ -20,5 +25,11 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_NAME: celln_blog
     env_file: ./.env

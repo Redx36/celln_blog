@@ -90,7 +90,7 @@ exports.update = (req, res) => {
         where: { id: id }
     })
         .then(num => {
-            if (num === 1) {
+            if (num == 1) {
                 res.send({
                     message: "Article was updated successfully."
                 });

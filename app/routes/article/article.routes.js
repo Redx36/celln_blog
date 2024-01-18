@@ -90,15 +90,20 @@ module.exports = function(app) {
      *      - Articles
      *      description: Create one article
      *      parameters:
+     *      - name: id
+     *        description: id of the article
+     *        in: path
+     *        required: true
+     *        type: integer
      *      - name: title
      *        description: title of the article
      *        in: formData
-     *        required: true
+     *        required: false
      *        type: string
      *      - name: description
      *        description: description of the article
      *        in: formData
-     *        required: true
+     *        required: false
      *        type: string
      *      - name: published
      *        description: status of the article
